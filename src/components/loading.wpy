@@ -1,0 +1,40 @@
+<template>
+  <view class="app-loading-container" style="{{options.cssText}}" wx:if="{{options.visible}}">
+    <image mode="aspectFit" src="{{appLoading}}" class="app-loading-img animated {{options.className}}"></image>
+  </view>
+</template>
+
+
+<script>
+import wepy from 'wepy';
+export default class Loading extends wepy.component {
+  data = {
+    options: {
+      className: '', //动画类名
+      visible: false, //显示或是隐藏
+      cssText: '' //需要时候，控制样式
+    },
+    appLoading: '../images/loading.gif'
+  };
+  show(cssText = '') {
+    this.options.visible = true;
+    this.options.cssText = cssText;
+    this.options.className = 'fadeIn';
+    this.$apply();
+    wepy.hideLoading();
+  }
+  hide(cssText = '') {
+    this.options.cssText = cssText;
+    this.options.className = 'fadeOut';
+    this.$apply();
+    this._out();
+  }
+  _out() {
+    //复位
+    setTimeout(() => {
+      this.options.visible = false;
+      this.$apply();
+    }, 1000);
+  }
+}
+</script>
