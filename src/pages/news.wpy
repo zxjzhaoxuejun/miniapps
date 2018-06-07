@@ -156,79 +156,29 @@ export default class News extends wepy.page {
         }
       }
 
-      if (indexVal == 0) {
-        wepy
-          .request({
-            url: 'http://www.sieia.org/index/mobileport/news?id=2',
-            header: { 'content-type': 'application/json' }
-          })
-          .then(d => {
-            for (let i = 0; i < d.data.length; i++) {
-              if (d.data.art_thumb != '') {
-                d.data[i].art_thumb =
-                  'http://www.sieia.org/static/' + d.data[i].art_thumb;
-              }
-              d.data[i].create_time = formatDate(d.data[i].create_time);
+      this.$invoke('loading', 'show');
+      RequestService.netRequest(
+        'POST',
+        '',
+        'http://www.sieia.org/index/mobileport/news?id=' + (indexVal + 2),
+        fail => {
+          console.log(fail);
+          console.log('失败');
+        },
+        res => {
+          for (let i = 0; i < res.data.length; i++) {
+            if (res.data.art_thumb != '') {
+              res.data[i].art_thumb =
+                'http://www.sieia.org/static/' + res.data[i].art_thumb;
             }
-            this.setData({
-              articleList: d.data
-            });
+            res.data[i].create_time = formatDate(res.data[i].create_time);
+          }
+          this.setData({
+            articleList: res.data
           });
-      } else if (indexVal == 1) {
-        wepy
-          .request({
-            url: 'http://www.sieia.org/index/mobileport/news?id=3',
-            header: { 'content-type': 'application/json' }
-          })
-          .then(d => {
-            for (let i = 0; i < d.data.length; i++) {
-              if (d.data.art_thumb != '') {
-                d.data[i].art_thumb =
-                  'http://www.sieia.org/static/' + d.data[i].art_thumb;
-              }
-              d.data[i].create_time = formatDate(d.data[i].create_time);
-            }
-            this.setData({
-              articleList: d.data
-            });
-          });
-      } else if (indexVal == 2) {
-        wepy
-          .request({
-            url: 'http://www.sieia.org/index/mobileport/news?id=4',
-            header: { 'content-type': 'application/json' }
-          })
-          .then(d => {
-            for (let i = 0; i < d.data.length; i++) {
-              if (d.data.art_thumb != '') {
-                d.data[i].art_thumb =
-                  'http://www.sieia.org/static/' + d.data[i].art_thumb;
-              }
-              d.data[i].create_time = formatDate(d.data[i].create_time);
-            }
-            this.setData({
-              articleList: d.data
-            });
-          });
-      } else if (indexVal == 3) {
-        wepy
-          .request({
-            url: 'http://www.sieia.org/index/mobileport/news?id=5',
-            header: { 'content-type': 'application/json' }
-          })
-          .then(d => {
-            for (let i = 0; i < d.data.length; i++) {
-              if (d.data.art_thumb != '') {
-                d.data[i].art_thumb =
-                  'http://www.sieia.org/static/' + d.data[i].art_thumb;
-              }
-              d.data[i].create_time = formatDate(d.data[i].create_time);
-            }
-            this.setData({
-              articleList: d.data
-            });
-          });
-      }
+          this.$invoke('loading', 'hide');
+        }
+      );
     }
   };
 

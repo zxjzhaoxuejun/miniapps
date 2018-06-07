@@ -9,7 +9,6 @@ export class RequestService {
    */
   static httpHandlerError(info, callBack, errTip) {
     /**请求成功，退出该函数 */
-    wepy.showToast({ title: '加载中...', icon: 'loading' });
     if (
       (info.statusCode >= 200 && info.statusCode <= 207) ||
       info.statusCode === 304

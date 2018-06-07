@@ -1,6 +1,7 @@
 <template>
   <view class="app-loading-container" style="{{options.cssText}}" wx:if="{{options.visible}}">
-    <image mode="aspectFit" src="{{appLoading}}" class="app-loading-img animated {{options.className}}"></image>
+    <text  class="app-loading-img animated {{options.className}}" style="color:#fff;font-size:20rpx;">加载中...</text>
+    <!-- <image mode="aspectFit" src="{{appLoading}}" class="app-loading-img animated {{options.className}}"></image> -->
   </view>
 </template>
 
