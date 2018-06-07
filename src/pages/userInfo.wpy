@@ -1,0 +1,20 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    Hello world
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class UserInfo extends wepy.page {
+    config = {
+      navigationBarTitleText: '获取用户'
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

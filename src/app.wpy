@@ -1,0 +1,71 @@
+<style lang="less">
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+</style>
+
+<script>
+  import wepy from 'wepy';
+  import 'wepy-async-function';
+
+  export default class extends wepy.app {
+    config = {
+      pages: [
+        'pages/index',
+        'pages/news',
+        'pages/userInfo'
+      ],
+      tabBar: {
+        selectedColor: '#1296db',
+        list: [{
+          iconPath: './images/home_n.png',
+          selectedIconPath: './images/home_h.png',
+          pagePath: 'pages/index',
+          text: '首页'
+        },
+        {
+          iconPath: './images/new_n.png',
+          selectedIconPath: './images/new_h.png',
+          pagePath: 'pages/news',
+          text: '资讯'
+        }, {
+          iconPath: './images/fw_n.png',
+          selectedIconPath: './images/fw_h.png',
+          pagePath: 'pages/userInfo',
+          text: '服务'
+        },
+        {
+          iconPath: './images/hy.png',
+          selectedIconPath: './images/hy_h.png',
+          pagePath: 'pages/userInfo',
+          text: '会员'
+        },
+        {
+          iconPath: './images/us_n.png',
+          selectedIconPath: './images/us_h.png',
+          pagePath: 'pages/userInfo',
+          text: '关于'
+        }
+        ]
+      },
+      window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#000',
+        navigationBarTitleText: '网创会',
+        navigationBarTextStyle: '#fff'
+      }
+    };
+    constructor() {
+      super();
+      this.use('promisify');
+    }
+
+    onLaunch() {
+      console.log('on launch')
+    }
+  }
+</script>
