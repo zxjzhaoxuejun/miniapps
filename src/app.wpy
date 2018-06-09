@@ -1,4 +1,8 @@
 <style lang="less">
+  page {
+    height: 100%;
+  }
+
   .container {
     height: 100%;
     display: flex;
@@ -34,7 +38,8 @@
       pages: [
         'pages/index',
         'pages/news',
-        'pages/userInfo'
+        'pages/userInfo',
+        'pages/weather'
       ],
       tabBar: {
         selectedColor: '#1296db',
@@ -52,7 +57,7 @@
         }, {
           iconPath: './images/fw_n.png',
           selectedIconPath: './images/fw_h.png',
-          pagePath: 'pages/userInfo',
+          pagePath: 'pages/weather',
           text: '服务'
         },
         {
