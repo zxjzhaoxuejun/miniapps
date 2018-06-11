@@ -182,7 +182,7 @@ export default class News extends wepy.page {
     }
   };
 
-  onLoad() {
+  onShow() {
     wepy
       .request({
         url: 'http://www.sieia.org/index/mobileport/hot_news',
